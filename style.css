@@ -20,19 +20,27 @@ main {
     background-color: gray;
     border: 8px solid #505050;
     border-radius: 8px;
-    box-shadow: 4px 4px 4px rgb(156, 156, 156);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.31);
+    padding: 2px 3px;
 }
 
-.cells {
-    margin-top: 4px;
-    margin-left: 4px;
-    width: 64px;
+.row{
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    margin: 2px 0;
+    background-color: rgba(255, 255, 255, 0.500);
+}
+
+.cell {
     height: 64px;
-    background-color: rgb(184, 184, 184);
+    width: 64px;
+    margin: 0 1px;
+    background-color: rgb(255, 255, 255);
     border-radius: 2px;
 }
 
-.cells-bottom {
+/* .cells-bottom {
     margin-top: 4px;
     margin-left: 4px;
     margin-bottom: 4px;
@@ -40,4 +48,4 @@ main {
     height: 64px;
     background-color: rgb(184, 184, 184);
     border-radius: 2px;
-}
+} */

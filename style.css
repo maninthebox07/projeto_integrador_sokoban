@@ -11,7 +11,10 @@ main {
 }
 
 #game {
-    display: block;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
 }
 
 .board {
@@ -24,12 +27,12 @@ main {
     padding: 2px 3px;
 }
 
-.row{
+.row {
     display: flex;
     flex-direction: row;
     height: auto;
     margin: 2px 0;
-    background-color: rgba(255, 255, 255, 0.500);
+    /* background-color: rgba(255, 255, 255, 0.500); */
 }
 
 .cell {
@@ -38,4 +41,10 @@ main {
     margin: 0 1px;
     background-color: rgb(255, 255, 255);
     border-radius: 2px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.31);
+}
+
+.empty{
+    background-color: unset;
+    box-shadow: none;
 }

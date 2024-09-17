@@ -13,6 +13,10 @@ function tab(qtd_row, qtd_cell) {
         // if(y == 0 || y == qtd_row -1 || x == 0 || x == qtd_cell - 1) {
         //     celula.classList.add('empty');
         // }
+
+        if(y < qtd_row - 1 && y > 0 && x < qtd_cell - 1 && x > 0) {
+            celula.classList.add('empty');
+        }
     }
 }
 }

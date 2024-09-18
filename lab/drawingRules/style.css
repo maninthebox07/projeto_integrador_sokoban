@@ -14,15 +14,18 @@ main {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width: 100vw;
+    width: 100%;
     align-items: center;
-    height: 100vh;
 }
 
 .board {
     min-width: 64px;
     min-height: 64px;
-    background-color: gray;
+    background: hsla(12, 89%, 89%, 1);
+
+background: linear-gradient(360deg, hsla(12, 89%, 89%, 1) 0%, hsla(329, 82%, 76%, 1) 50%, hsla(342, 95%, 78%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FCD4CA", endColorstr="#F48EC3", GradientType=1 );
     border: 8px solid #505050;
     border-radius: 8px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.31);
@@ -39,8 +42,8 @@ main {
 }
 
 .cell {
-    height: 64px;
-    width: 64px;
+    height: min(5vw, 5vh);
+    width: min(5vw, 5vh);
     margin: 0 1px;
     background-color: rgb(255, 255, 255);
     border-radius: 2px;

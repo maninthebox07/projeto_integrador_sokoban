@@ -19,6 +19,7 @@ main {
 }
 
 .board {
+    position: relative;
     min-width: 64px;
     min-height: 64px;
     background: linear-gradient(360deg, hsla(12, 89%, 89%, 1) 0%, hsla(329, 82%, 76%, 1) 50%, hsla(342, 95%, 78%, 1) 100%);
@@ -52,6 +53,9 @@ main {
 }
 
 .player {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 64px;
     height: 64px;
     box-sizing: border-box;

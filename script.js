@@ -8,6 +8,10 @@ const MARGIN_FIX = 4;
 playerElement.style.top = calculaPosicao(0);
 playerElement.style.left = calculaPosicao(0);
 
+function calculaPosicao(qtd) {
+    return `${qtd * DIST_SALTO + MARGIN_FIX}px`;
+}
+
 window.addEventListener("keydown", function(event) {
     const next = player.nextPosition(event.code);
     if(verifyPosition(next)) {
@@ -40,10 +44,6 @@ function Player(posX, posY) {
 function verifyPosition(position) {
     let {x, y} = position;
     return x >= 0 && x < 4 && y >= 0 && y < 4;
-}
-
-function calculaPosicao(qtd) {
-    return `${qtd * DIST_SALTO + MARGIN_FIX}px`;
 }
 
 console.log(calculaPosicao(0, 64) === "0px");

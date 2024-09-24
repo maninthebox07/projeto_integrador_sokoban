@@ -1,41 +1,34 @@
-function rule1(y, x, qtd_row, qtd_cell, celula) {
-    return y == qtd_cell && x == qtd_row;
+const DIST_SALTO = 66;
+const MARGIN_FIX = 4;
+const NUM_ROWS = 8;
+const NUM_COLS = 8;
+
+function rule0() {
+    return false;
 }
 
-buildBoard(10, 10, rule1);
+buildBoard(NUM_ROWS, NUM_COLS, rule0);
 
 function buildBoard(qtd_row, qtd_cell, rule) {
     const game = document.getElementById('game');
-    const board = document.createElement('div');
-    board.classList.add('board');
-
-
+    const board = createGameElement('div', 'board', game);
 
     for (let y = 0; y < qtd_row; y++) {
-        const linha = document.createElement('div');
-        linha.classList.add('row');
-        board.append(linha);
+        const linha = createGameElement('div', 'row', board);
+        
         for (let x = 0; x < qtd_cell; x++) {
-            const celula = document.createElement('div');
-            celula.classList.add('cell');
-            linha.append(celula);
+            const celula = createGameElement('div', 'cell', linha);
 
             if (rule(y, x, qtd_row, qtd_cell, celula)) {
                 celula.classList.add('empty');
             };
         }
-        game.append(board);
     }
 
-    const createPlayer = document.createElement('div');
-    createPlayer.classList.add('player');
-    board.append(createPlayer);
+    createGameElement('div', 'player', board);
 
     const player = new Player(0, 0);
     const playerElement = document.querySelector('.player');
-
-    const DIST_SALTO = 66;
-    const MARGIN_FIX = 4;
 
     playerElement.style.top = calculaPosicao(0);
     playerElement.style.left = calculaPosicao(0);
@@ -74,6 +67,14 @@ function buildBoard(qtd_row, qtd_cell, rule) {
 
     function verifyPosition(position) {
         let { x, y } = position;
-        return x >= 0 && x < qtd_row && y >= 0 && y < qtd_cell;
+        return x >= 0 && x < NUM_ROWS && y >= 0 && y < NUM_COLS;
     }
+}
+
+function createGameElement(nomeElemento, nomeClasse, parentNode) {
+    const element = document.createElement(nomeElemento);
+    element.classList.add(nomeClasse);
+    parentNode.append(element);
+    
+    return element;
 }

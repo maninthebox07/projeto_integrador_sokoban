@@ -1,0 +1,72 @@
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+
+#game {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+
+.board {
+    position: relative;
+    min-width: 64px;
+    min-height: 64px;
+    background: linear-gradient(360deg, hsla(12, 89%, 89%, 1) 0%, hsla(329, 82%, 76%, 1) 50%, hsla(342, 95%, 78%, 1) 100%);
+    border: 8px solid #505050;
+    border-radius: 8px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.31);
+    padding: 2px 3px;
+    margin: 24px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    margin: 2px 0;
+    /* background-color: rgba(255, 255, 255, 0.500); */
+}
+
+.cell {
+    height: 64px;
+    width: 64px;
+    margin: 0 1px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.31);
+}
+
+.empty{
+    background-color: unset;
+    box-shadow: none;
+}
+
+.player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    border: 5px solid hsla(134, 36%, 30%, 1);
+    border-radius: 30px;
+    background: linear-gradient(360deg, hsla(59, 86%, 68%, 1) 0%, hsla(134, 36%, 53%, 1) 100%);
+    transition:
+    left 150ms ease-in-out 50ms,
+    top 150ms ease-in-out 50ms;
+}
+
+.block {
+    background-color: #505050;
+}

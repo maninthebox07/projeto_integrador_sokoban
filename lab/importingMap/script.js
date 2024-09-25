@@ -29,6 +29,10 @@ function buildBoard(qtd_row, qtd_cell) {
         
         for (let x = 0; x < qtd_cell; x++) {
             const celula = createGameElement('div', 'cell', linha);
+            const char = boardMap[y][x];
+            console.log(char);
+
+            if(char === '#') celula.classList.add('wall');
         }
     }
 }

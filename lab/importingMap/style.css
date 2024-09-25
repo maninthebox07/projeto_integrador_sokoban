@@ -67,6 +67,6 @@ main {
     top 150ms ease-in-out 50ms;
 }
 
-.block {
-    background-color: #505050;
-}
+.box { background-color: chocolate; }
+.goal { background-color: burlywood; }
+.wall { background-color: rgba(0, 0, 0, 0.5); }

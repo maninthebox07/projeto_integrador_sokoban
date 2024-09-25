@@ -22,7 +22,7 @@ main {
     position: relative;
     min-width: 64px;
     min-height: 64px;
-    background: linear-gradient(360deg, hsla(12, 89%, 89%, 1) 0%, hsla(329, 82%, 76%, 1) 50%, hsla(342, 95%, 78%, 1) 100%);
+    background: rgb(42, 47, 70);
     border: 8px solid #505050;
     border-radius: 8px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.31);
@@ -66,3 +66,7 @@ main {
     left 150ms ease-in-out 50ms,
     top 150ms ease-in-out 50ms;
 }
+
+.box { background-color: chocolate; }
+.goal { background-color: burlywood; }
+.wall { background-image: url("/assets/wall.png");}

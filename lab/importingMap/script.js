@@ -1,44 +1,54 @@
-const boardMap = [
-    [ "#", "#", "#", "#", "#", "#", "#", "#" ],
-    [ "#", ".", ".", ".", ".", ".", ".", "#" ],
-    [ "#", ".", ".", ".", "#", ".", ".", "#" ],
-    [ "#", ".", "#", "G", ".", ".", ".", "#" ],
-    [ "#", ".", ".", "G", "B", "#", ".", "#" ],
-    [ "#", ".", ".", "#", ".", "B", ".", "#" ],
-    [ "#", ".", ".", "P", ".", ".", ".", "#" ],
-    [ "#", "#", "#", "#", "#", "#", "#", "#" ]
-]
+buildBoard(8, 8, rule1);
+buildBoard(8, 8, rule2);
+buildBoard(8, 8, rule3);
+buildBoard(8, 8, rule4);
+buildBoard(8, 8, rule5);
+buildBoard(8, 8, rule6);
 
-const DIST_SALTO = 66;
-const MARGIN_FIX = 4;
-const NUM_ROWS = boardMap[0].length;
-const NUM_COLS = boardMap.length;
-
-buildBoard(NUM_ROWS, NUM_COLS);
-
-function buildBoard(qtd_row, qtd_cell) {
+function buildBoard(qtd_row, qtd_cell, rule) {
     const game = document.getElementById('game');
-    const board = createGameElement('div', 'board', game);
+    const board = document.createElement('div');
+    board.classList.add('board');
+
+
 
     for (let y = 0; y < qtd_row; y++) {
-        const linha = createGameElement('div', 'row', board);
-        
+        const linha = document.createElement('div');
+        linha.classList.add('row');
+        board.append(linha);
         for (let x = 0; x < qtd_cell; x++) {
-            const celula = createGameElement('div', 'cell', linha);
-            const char = boardMap[y][x];
-            console.log(char);
+            const celula = document.createElement('div');
+            celula.classList.add('cell');
+            linha.append(celula);
 
-            if(char === '#') celula.classList.add('wall');
-            if(char === 'B') celula.classList.add('box');
-            if(char === 'G') celula.classList.add('goal');
+            if(rule(y, x, qtd_row, qtd_cell, celula)) {
+                celula.classList.add('empty');
+            };
         }
+        game.append(board)
     }
 }
 
-function createGameElement(nomeElemento, nomeClasse, parentNode) {
-    const element = document.createElement(nomeElemento);
-    element.classList.add(nomeClasse);
-    parentNode.append(element);
-    
-    return element;
+function rule1(y, x, qtd_row, qtd_cell, celula) {
+    return y == 0 || y == qtd_row - 1 || x == 0 || x == qtd_cell - 1
+}
+
+function rule2(y, x, qtd_row, qtd_cell, celula) {
+    return y < qtd_row - 1 && y > 0 && x < qtd_cell - 1 && x > 0
+}
+
+function rule3(x, y, qtd_row, qtd_cell, celula) {
+    return x == y
+}
+
+function rule4(x, y, qtd_row, qtd_cell, celula) {
+    return y + x == qtd_row - 1
+}
+
+function rule5(x, y, qtd_row, qtd_cell, celula) {
+    return y == x || y + x == qtd_row - 1
+}
+
+function rule6(x, y, qtd_row, qtd_cell, celula) {
+    return x % 2 == 1 && y % 2 == 0 || y % 2 == 1 && x % 2 == 0
 }

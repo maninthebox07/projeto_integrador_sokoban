@@ -14,10 +14,6 @@ const MARGIN_FIX = 4;
 const NUM_ROWS = boardMap[0].length;
 const NUM_COLS = boardMap.length;
 
-function rule0() {
-    return false;
-}
-
 buildBoard(NUM_ROWS, NUM_COLS);
 
 function buildBoard(qtd_row, qtd_cell) {
@@ -33,6 +29,8 @@ function buildBoard(qtd_row, qtd_cell) {
             console.log(char);
 
             if(char === '#') celula.classList.add('wall');
+            if(char === 'B') celula.classList.add('box');
+            if(char === 'G') celula.classList.add('goal');
         }
     }
 }

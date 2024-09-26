@@ -1,15 +1,22 @@
+const boardMap = [
+    [ "#", "#", "#", "#", "#", "#", "#", "#" ],
+    [ "#", ".", ".", ".", ".", ".", ".", "#" ],
+    [ "#", ".", ".", ".", "#", ".", ".", "#" ],
+    [ "#", ".", "#", "G", ".", ".", ".", "#" ],
+    [ "#", ".", ".", "G", "B", "#", ".", "#" ],
+    [ "#", ".", ".", "#", ".", "B", ".", "#" ],
+    [ "#", ".", ".", "P", ".", ".", ".", "#" ],
+    [ "#", "#", "#", "#", "#", "#", "#", "#" ]
+]
+
 const DIST_SALTO = 66;
 const MARGIN_FIX = 4;
-const NUM_ROWS = 8;
-const NUM_COLS = 8;
+const NUM_ROWS = boardMap[0].length;
+const NUM_COLS = boardMap.length;
 
-function rule0() {
-    return false;
-}
+buildBoard(NUM_ROWS, NUM_COLS);
 
-buildBoard(NUM_ROWS, NUM_COLS, rule0);
-
-function buildBoard(qtd_row, qtd_cell, rule) {
+function buildBoard(qtd_row, qtd_cell) {
     const game = document.getElementById('game');
     const board = createGameElement('div', 'board', game);
 
@@ -18,20 +25,22 @@ function buildBoard(qtd_row, qtd_cell, rule) {
         
         for (let x = 0; x < qtd_cell; x++) {
             const celula = createGameElement('div', 'cell', linha);
+            const char = boardMap[y][x];
+            console.log(char);
 
-            if (rule(y, x, qtd_row, qtd_cell, celula)) {
-                celula.classList.add('empty');
-            };
+            if(char === '#') celula.classList.add('wall');
+            if(char === 'B') celula.classList.add('box');
+            if(char === 'G') celula.classList.add('goal');
         }
     }
 
     createGameElement('div', 'player', board);
 
-    const player = new Player(0, 0);
+    const player = new Player(1, 1);
     const playerElement = document.querySelector('.player');
 
-    playerElement.style.top = calculaPosicao(0);
-    playerElement.style.left = calculaPosicao(0);
+    playerElement.style.top = calculaPosicao(player.x);
+    playerElement.style.left = calculaPosicao(player.y);
 
     function calculaPosicao(qtd) {
         return `${qtd * DIST_SALTO + MARGIN_FIX}px`;
@@ -67,7 +76,7 @@ function buildBoard(qtd_row, qtd_cell, rule) {
 
     function verifyPosition(position) {
         let { x, y } = position;
-        return x >= 0 && x < NUM_ROWS && y >= 0 && y < NUM_COLS;
+        return boardMap[x][y] != '#';
     }
 }
 

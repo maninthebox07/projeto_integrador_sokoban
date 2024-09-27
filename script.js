@@ -36,6 +36,7 @@ function Player(posX, posY) {
     this.y = posY;
     this.nextPosition = function (keycode) {
         let { x, y } = this;
+        
         if (keycode === 'ArrowUp') x--;
         if (keycode === 'ArrowDown') x++;
         if (keycode === 'ArrowLeft') y--;
@@ -47,6 +48,7 @@ function Player(posX, posY) {
     this.moveTo = function (position, element) {
         this.x = position.x;
         this.y = position.y;
+        
         element.style.top = calculaPosicao(this.x);
         element.style.left = calculaPosicao(this.y);
     }
@@ -79,6 +81,7 @@ function buildGameBoard(linhas, celulas) {
         for (let j = 0; j < celulas; j++) {
             const celula = createGameElement('div', 'cell', linha);
             const char = boardMap[i][j];
+            
             if (char === '#') celula.classList.add('wall');
             if (char === 'B') celula.classList.add('box');
             if (char === 'G') celula.classList.add('goal');

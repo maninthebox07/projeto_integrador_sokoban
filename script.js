@@ -5,12 +5,19 @@ const DIST_SALTO = 66;
 const MARGIN_FIX = 4;
 
 const pieces = buildGameBoard(NUM_ROWS, NUM_COLS);
-const player = new Piece(pieces.player.x, pieces.player.y);
 const board = document.querySelector('.board');
-const playerElement = createGameElement('div', 'player', board);
 
-playerElement.style.top = calculaPosicao(player.x);
-playerElement.style.left = calculaPosicao(player.y);
+const player = new Piece(pieces.player.x, pieces.player.y);
+const playerElement = createBoardPiece(player, 'player')
+
+function createBoardPiece(piece, className) {
+    const element = createGameElement('div', className, board);
+
+    element.style.top = calculaPosicao(piece.x);
+    element.style.left = calculaPosicao(piece.y);
+
+    return element;
+}
 
 window.addEventListener("keydown", function (event) {
     const next = player.nextPosition(event.code);

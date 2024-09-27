@@ -19,18 +19,23 @@ function Piece(posX, posY) {
         this.x = position.x;
         this.y = position.y;
 
-        this.element.style.top = calculaPosicao(this.x);
-        this.element.style.left = calculaPosicao(this.y);
+        this.updateElementPosition();
     }
 
     this.insertElementInto = function (className, parent) {
         this.element = createGameElement('div', className, parent);
 
+        this.updateElementPosition();
+    }
+
+    this.updateElementPosition = function () {
         this.element.style.top = calculaPosicao(this.x);
         this.element.style.left = calculaPosicao(this.y);
     }
-}
 
-function calculaPosicao(qtd) {
-    return qtd * DIST_SALTO + MARGIN_FIX + "px";
+    /* Funções pivadas */
+
+    function calculaPosicao(qtd) {
+        return qtd * DIST_SALTO + MARGIN_FIX + "px";
+    }
 }

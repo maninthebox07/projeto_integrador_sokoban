@@ -74,6 +74,9 @@ main {
     border-radius: 15px;
     background: linear-gradient(360deg, hsla(59, 86%, 68%, 1) 0%, hsla(134, 36%, 53%, 1) 100%);
     margin: 2px;
+    transition:
+    left 150ms ease-in-out 50ms,
+    top 150ms ease-in-out 50ms;
 }
 
 .box { background-color: chocolate; }

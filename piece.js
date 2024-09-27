@@ -3,7 +3,7 @@ function Piece(posX, posY) {
     this.y = posY;
     this.nextPosition = function (keycode) {
         let { x, y } = this;
-        
+
         if (keycode === 'ArrowUp') x--;
         if (keycode === 'ArrowDown') x++;
         if (keycode === 'ArrowLeft') y--;
@@ -15,8 +15,15 @@ function Piece(posX, posY) {
     this.moveTo = function (position, element) {
         this.x = position.x;
         this.y = position.y;
-        
+
         element.style.top = calculaPosicao(this.x);
         element.style.left = calculaPosicao(this.y);
+    }
+
+    this.insertElementInto = function (className, parent) {
+        this.element = createGameElement('div', className, parent);
+
+        this.element.style.top = calculaPosicao(this.x);
+        this.element.style.left = calculaPosicao(this.y);
     }
 }

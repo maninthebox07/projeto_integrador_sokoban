@@ -9,9 +9,14 @@ const boardMap = [
     ["#", "#", "#", "#", "#", "#", "#", "#"]
 ]
 
+const NUM_ROWS = boardMap.length;
+const NUM_COLS = boardMap[0].length;
+
 function buildGameBoard(linhas, celulas) {
-    const positionOfPieces = {};
-    
+    const pieces = {
+        boxes: []
+    };
+
     const game = document.getElementById('game');
     const board = createGameElement('div', 'board', game);
 
@@ -20,15 +25,16 @@ function buildGameBoard(linhas, celulas) {
         for (let j = 0; j < celulas; j++) {
             const celula = createGameElement('div', 'cell', linha);
             const char = boardMap[i][j];
-            
+
             if (char === '#') celula.classList.add('wall');
-            if (char === 'B') celula.classList.add('box');
+            // if (char === 'B') celula.classList.add('box');
             if (char === 'G') celula.classList.add('goal');
-            if (char === 'P') positionOfPieces.player = { x: i, y: j }
+            if (char === 'P') pieces.player = { x: i, y: j };
+            if (char === 'B') pieces.boxes.push({ x: i, y: j });
         }
     }
-    
-    return positionOfPieces;
+
+    return pieces;
 }
 
 function createGameElement(elementName, className, parentNode) {

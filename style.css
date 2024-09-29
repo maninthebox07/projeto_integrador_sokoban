@@ -79,6 +79,6 @@ main {
     top 150ms ease-in-out 50ms;
 }
 
-.box { background-color: chocolate; }
-.goal { background-color: burlywood; }
+.box { background-image: url("assets/chest.png"); }
+.goal { background-image: url("assets/cross.png"); }
 .wall { background-image: url("/assets/wall.png");}

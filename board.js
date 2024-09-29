@@ -27,7 +27,7 @@ function buildGameBoard(linhas, celulas) {
             const char = boardMap[i][j];
 
             if (char === '#') celula.classList.add('wall');
-            // if (char === 'B') celula.classList.add('box');
+            if (char === 'B') celula.classList.add('box');
             if (char === 'G') celula.classList.add('goal');
             if (char === 'P') pieces.player = { x: i, y: j };
             if (char === 'B') pieces.boxes.push({ x: i, y: j });

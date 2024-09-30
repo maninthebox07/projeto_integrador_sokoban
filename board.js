@@ -12,8 +12,8 @@ export const boardMap = [
 const NUM_ROWS = boardMap.length;
 const NUM_COLS = boardMap[0].length;
 
-export function buildGameBoard(linhas, celulas) {
-    const positionOfPieces = {
+export function buildGameBoard() {
+    const pieces = {
         boxes: []
     };
     
@@ -28,13 +28,14 @@ export function buildGameBoard(linhas, celulas) {
             const position = { x: j, y: i };
             
             if (char === '#') celula.classList.add('wall');
-            if (char === 'B') celula.classList.add('box');
+            // if (char === 'B') celula.classList.add('box');
             if (char === 'G') celula.classList.add('goal');
-            if (char === 'P') positionOfPieces.player = position;
+            if (char === 'P') pieces.player = position;
+            if (char === 'B') pieces.boxes.push(position);
         }
     }
     
-    return positionOfPieces;
+    return pieces;
 }
 
 export function createGameElement(elementName, className, parentNode) {

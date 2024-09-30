@@ -1,3 +1,5 @@
+import { createGameElement } from "./board.js";
+
 const DIST_SALTO = 66;
 const MARGIN_FIX = 4;
 
@@ -11,7 +13,7 @@ function Piece(posX, posY) {
         if (keycode === 'ArrowDown') x++;
         if (keycode === 'ArrowLeft') y--;
         if (keycode === 'ArrowRight') y++;
-        console.log(keycode, player);
+        console.log(keycode);
         return { x, y };
     }
 
@@ -39,3 +41,5 @@ function Piece(posX, posY) {
         return qtd * DIST_SALTO + MARGIN_FIX + "px";
     }
 }
+
+export default Piece;

@@ -12,8 +12,43 @@ for(let b=0; b<pieces.boxes.length; b++) {
 }
 
 window.addEventListener("keydown", function (event) {
-    handleKeydownEvent(event.code);
+    // event.preventDefault();
+
+    handlePieceMovement(event.code);
 });
+
+console.log(pieces.boxes);
+
+/** Tarefa #1: implementar função para localizar uma caixa à partir de um
+ * uma dada coordenada.
+*/
+function findBoxAtPosition(position) {
+
+    return boxes.find((box) => box.x === position.x && box.y === position.y);
+}
+
+/** Tarefa #2: modificar a função abaixo de forma a tratar tanto a movimentação
+ * do jogador quanto das caixas.
+*/
+function handlePieceMovement(keycode){
+    // Variável destinada ao pré-cálculo da posição do jogador
+    const next = player.nextPosition(keycode);
+    // (Modificar) Variável para detectar a "presença" de outra peça
+    const foundPiece = null;
+
+    // Implementar lógica caso encontre uma outra peça no caminho.
+    if(foundPiece) {
+
+    }
+    // E caso não encontre outra peça...
+    else {
+        // Faça as modificações que forem necessárias para manter o
+        // funcionamento do jogo.
+        if (verifyPosition(next)) {
+            player.moveTo(next);
+        }
+    }
+}
 
 function createBoardPiece(piecePosition, className) {
     const piece =  new Piece(piecePosition.x, piecePosition.y);

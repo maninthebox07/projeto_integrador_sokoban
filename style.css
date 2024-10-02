@@ -79,6 +79,17 @@ main {
     top 150ms ease-in-out 50ms;
 }
 
-.box { background-color: chocolate; }
-.goal { background-color: burlywood; }
+.box {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    background-image: url("assets/chest.png");
+    transition:
+    left 150ms ease-in-out 50ms,
+    top 150ms ease-in-out 50ms;
+}
+
+.box { background-image: url("assets/chest.png"); z-index: 10; position: absolute; box-sizing: border-box;}
+.goal { background-image: url("assets/cross.png"); }
 .wall { background-image: url("/assets/wall.png");}

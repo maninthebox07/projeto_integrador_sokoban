@@ -19,24 +19,15 @@ window.addEventListener("keydown", function (event) {
 
 console.log(pieces.boxes);
 
-/** Tarefa #1: implementar função para localizar uma caixa à partir de um
- * uma dada coordenada.
-*/
 function findBoxAtPosition(position) {
 
     return boxes.find((box) => box.x === position.x && box.y === position.y);
 }
 
-/** Tarefa #2: modificar a função abaixo de forma a tratar tanto a movimentação
- * do jogador quanto das caixas.
-*/
 function handlePieceMovement(keycode) {
-    // Variável destinada ao pré-cálculo da posição do jogador
     const nextPlayerPosition = player.nextPosition(keycode);
-    // (Modificar) Variável para detectar a "presença" de outra peça
     const foundBox = findBoxAtPosition(nextPlayerPosition);
 
-    // Implementar lógica caso encontre uma outra peça no caminho.
     if (foundBox) {
         const nextBoxPosition = foundBox.nextPosition(keycode);
         const boxCanMove = verifyPosition(nextBoxPosition) && !findBoxAtPosition(nextBoxPosition);
@@ -44,12 +35,17 @@ function handlePieceMovement(keycode) {
         if (boxCanMove) {
             foundBox.moveTo(nextBoxPosition);
             player.moveTo(nextPlayerPosition);
+
+            const caixasCertas = contagemDeCaixasCorretas();
+            console.log(caixasCertas);
+
+            if (caixasCertas === 2) {
+                alert("Congratulations!");
+            }
         }
     }
-    // E caso não encontre outra peça...
+    
     else {
-        // Faça as modificações que forem necessárias para manter o
-        // funcionamento do jogo.
         const playerCanMove = verifyPosition(nextPlayerPosition);
 
         if (playerCanMove) {
@@ -76,4 +72,16 @@ function handleKeydownEvent(keycode) {
 function verifyPosition(position) {
     let { x: j, y: i } = position;
     return boardMap[i][j] !== "#";
+}
+
+function contagemDeCaixasCorretas() {
+    let count = 0;
+
+    for(let position of boxes) {
+        let {x: j, y: i} = position;
+
+        if (boardMap[i][j] === 'G') count++;
+    }
+
+    return count;
 }

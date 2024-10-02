@@ -13,6 +13,10 @@ function Piece(posX, posY) {
         if (keycode === 'ArrowDown') y++;
         if (keycode === 'ArrowLeft') x--;
         if (keycode === 'ArrowRight') x++;
+        if (keycode === 'KeyW') y--;
+        if (keycode === 'KeyS') y++;
+        if (keycode === 'KeyA') x--;
+        if (keycode === 'KeyD') x++;
         console.log(keycode);
         return { x, y };
     }

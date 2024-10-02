@@ -90,6 +90,6 @@ main {
     top 150ms ease-in-out 50ms;
 }
 
-.box { background-image: url("assets/chest.png"); z-index: 10; position: absolute; box-sizing: border-box;}
+.box { background-image: url("assets/chest.png"); position: absolute; box-sizing: border-box;}
 .goal { background-image: url("assets/cross.png"); }
 .wall { background-image: url("/assets/wall.png");}

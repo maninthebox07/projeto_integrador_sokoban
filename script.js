@@ -24,6 +24,10 @@ function findBoxAtPosition(position) {
     return boxes.find((box) => box.x === position.x && box.y === position.y);
 }
 
+function congratulationsMessage() {
+    alert("Congratulations!");
+}
+
 function handlePieceMovement(keycode) {
     const nextPlayerPosition = player.nextPosition(keycode);
     const foundBox = findBoxAtPosition(nextPlayerPosition);
@@ -40,7 +44,7 @@ function handlePieceMovement(keycode) {
             console.log(caixasCertas);
 
             if (caixasCertas === 2) {
-                alert("Congratulations!");
+                setTimeout(congratulationsMessage, 200);
             }
         }
     }

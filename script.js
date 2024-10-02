@@ -7,6 +7,9 @@ const board = document.querySelector('.board');
 const player = createBoardPiece(pieces.player, 'player')
 const boxes = [];
 
+let playerMoves = 0;
+let boxMoves = 0;
+
 for (let b = 0; b < pieces.boxes.length; b++) {
     boxes.push(createBoardPiece(pieces.boxes[b], 'box'));
 }
@@ -46,6 +49,8 @@ function handlePieceMovement(keycode) {
             if (caixasCertas === numberOfGoals) {
                 setTimeout(congratulationsMessage, 200);
             }
+            console.log("Box Moves:", boxMoves += 1);
+            console.log("Player Moves:", playerMoves += 1);
         }
     }
     
@@ -54,6 +59,7 @@ function handlePieceMovement(keycode) {
 
         if (playerCanMove) {
             player.moveTo(nextPlayerPosition);
+            console.log("Player Moves:", playerMoves += 1);
         }
     }
 }

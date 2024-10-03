@@ -1,22 +1,12 @@
-const lvl0 = `
- __#####
-###P..#_
-#..B#.##
-#.#GB..#
-#..G.#.#
-#..#...#
-_#...###
-_#####
-`
+import { mapa1, mapa2, mapa3 } from "./maps.js";
 
 function string2BoardMap(level) {
     const lines = level.trim().split('\n');
-    console.log(lines)
 
     return lines;
 }
 
-export const boardMap = string2BoardMap(lvl0);
+export const boardMap = string2BoardMap(mapa2);
 
 // export const boardMap = [
 //     [" ", " ", "#", "#", "#", "#", "#",],

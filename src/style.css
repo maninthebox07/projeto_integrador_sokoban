@@ -1,6 +1,8 @@
 body {
     height: 100vh;
     margin: 0;
+    background-image: url("./assets/rpg-background.jpg");
+    background-size: cover;
 }
 
 main {
@@ -28,7 +30,7 @@ main {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.31);
     padding: 2px 3px;
     margin: 24px;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .row {
@@ -42,7 +44,8 @@ main {
     height: 64px;
     width: 64px;
     margin: 0 1px;
-    background-color: rgb(255, 255, 255);
+    background-image: url("./assets/floor.jpg");
+    background-size: cover;
     border-radius: 2px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.31);
 }
@@ -50,6 +53,7 @@ main {
 .empty{
     background-color: unset;
     box-shadow: none;
+    background-image: unset;
 }
 
 .player {
@@ -77,13 +81,13 @@ main {
     top 150ms ease-in-out 50ms;
 }
 
-.goal { background-image: url("./assets/cross.png");}
-.wall { background-image: url("./assets/wall.png");}
+.goal { background-image: url("./assets/goal.jpg");}
+.wall { background-image: url("./assets/wall.png"); background-size:auto;}
 
 .counters {
     font-family: 'VT323', monospace;
     font-size: 20px;
-    color: #1C1F2E;
+    color: white;
     text-align: center;
     margin-top: 10px;
     display: flex;

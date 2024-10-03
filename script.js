@@ -10,6 +10,9 @@ const boxes = [];
 let playerMoves = 0;
 let boxMoves = 0;
 
+const playerMovesElement = document.getElementById('player-moves');
+const boxMovesElement = document.getElementById('box-moves');
+
 for (let b = 0; b < pieces.boxes.length; b++) {
     boxes.push(createBoardPiece(pieces.boxes[b], 'box'));
 }
@@ -50,7 +53,9 @@ function handlePieceMovement(keycode) {
                 setTimeout(congratulationsMessage, 200);
             }
             console.log("Box Moves:", boxMoves += 1);
+            boxMovesElement.textContent = boxMoves;
             console.log("Player Moves:", playerMoves += 1);
+            playerMovesElement.textContent = playerMoves;
         }
     }
     
@@ -60,6 +65,7 @@ function handlePieceMovement(keycode) {
         if (playerCanMove) {
             player.moveTo(nextPlayerPosition);
             console.log("Player Moves:", playerMoves += 1);
+            playerMovesElement.textContent = playerMoves;
         }
     }
 }

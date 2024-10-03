@@ -1,12 +1,8 @@
-import { mapa1, mapa2, mapa3 } from "./maps.js";
-
 function string2BoardMap(level) {
     const lines = level.trim().split('\n');
 
     return lines;
 }
-
-const boardMap = string2BoardMap(mapa2);
 
 // export const boardMap = [
 //     [" ", " ", "#", "#", "#", "#", "#",],
@@ -19,12 +15,14 @@ const boardMap = string2BoardMap(mapa2);
 //     [" ", "#", "#", "#", "#", "#",]
 // ]
 
-const NUM_ROWS = boardMap.length;
 
-export function buildGameBoard() {
+export function buildGameBoard(mapa) {
+    const boardMap = string2BoardMap(mapa);
     const pieces = {
         boxes: []
     };
+
+    const NUM_ROWS = boardMap.length;
 
     let numberOfGoals = 0;
 

@@ -7,6 +7,12 @@ const board = document.querySelector('.board');
 const player = createBoardPiece(pieces.player, 'player')
 const boxes = [];
 
+let playerMoves = 0;
+let boxMoves = 0;
+
+const playerMovesElement = document.getElementById('player-moves');
+const boxMovesElement = document.getElementById('box-moves');
+
 for (let b = 0; b < pieces.boxes.length; b++) {
     boxes.push(createBoardPiece(pieces.boxes[b], 'box'));
 }
@@ -32,6 +38,7 @@ function handlePieceMovement(keycode) {
     const nextPlayerPosition = player.nextPosition(keycode);
     const foundBox = findBoxAtPosition(nextPlayerPosition);
 
+    let playerMoved = false;
     if (foundBox) {
         const nextBoxPosition = foundBox.nextPosition(keycode);
         const boxCanMove = verifyPosition(nextBoxPosition) && !findBoxAtPosition(nextBoxPosition);
@@ -40,23 +47,35 @@ function handlePieceMovement(keycode) {
             foundBox.moveTo(nextBoxPosition);
             player.moveTo(nextPlayerPosition);
 
+            playerMoved = true;
+
             const caixasCertas = contagemDeCaixasCorretas();
             console.log(caixasCertas);
 
             if (caixasCertas === numberOfGoals) {
                 setTimeout(congratulationsMessage, 200);
             }
+            console.log("Box Moves:", boxMoves += 1);
+            boxMovesElement.textContent = boxMoves;
         }
     }
-    
     else {
         const playerCanMove = verifyPosition(nextPlayerPosition);
 
         if (playerCanMove) {
-            player.moveTo(nextPlayerPosition);
+            if (player.x !== nextPlayerPosition.x || player.y !== nextPlayerPosition.y) {
+                player.moveTo(nextPlayerPosition);
+                playerMoved = true;
+            }
         }
     }
+
+    if (playerMoved) {
+        console.log("Player Moves:", playerMoves += 1);
+        playerMovesElement.textContent = playerMoves;
+    }
 }
+
 
 function createBoardPiece(piecePosition, className) {
     const piece = new Piece(piecePosition.x, piecePosition.y);

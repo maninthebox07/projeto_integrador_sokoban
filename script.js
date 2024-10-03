@@ -38,6 +38,7 @@ function handlePieceMovement(keycode) {
     const nextPlayerPosition = player.nextPosition(keycode);
     const foundBox = findBoxAtPosition(nextPlayerPosition);
 
+    let playerMoved = false;
     if (foundBox) {
         const nextBoxPosition = foundBox.nextPosition(keycode);
         const boxCanMove = verifyPosition(nextBoxPosition) && !findBoxAtPosition(nextBoxPosition);
@@ -45,6 +46,8 @@ function handlePieceMovement(keycode) {
         if (boxCanMove) {
             foundBox.moveTo(nextBoxPosition);
             player.moveTo(nextPlayerPosition);
+
+            playerMoved = true;
 
             const caixasCertas = contagemDeCaixasCorretas();
             console.log(caixasCertas);
@@ -54,21 +57,25 @@ function handlePieceMovement(keycode) {
             }
             console.log("Box Moves:", boxMoves += 1);
             boxMovesElement.textContent = boxMoves;
-            console.log("Player Moves:", playerMoves += 1);
-            playerMovesElement.textContent = playerMoves;
         }
     }
-    
     else {
         const playerCanMove = verifyPosition(nextPlayerPosition);
 
         if (playerCanMove) {
-            player.moveTo(nextPlayerPosition);
-            console.log("Player Moves:", playerMoves += 1);
-            playerMovesElement.textContent = playerMoves;
+            if (player.x !== nextPlayerPosition.x || player.y !== nextPlayerPosition.y) {
+                player.moveTo(nextPlayerPosition);
+                playerMoved = true;
+            }
         }
     }
+
+    if (playerMoved) {
+        console.log("Player Moves:", playerMoves += 1);
+        playerMovesElement.textContent = playerMoves;
+    }
 }
+
 
 function createBoardPiece(piecePosition, className) {
     const piece = new Piece(piecePosition.x, piecePosition.y);

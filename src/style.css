@@ -71,14 +71,14 @@ main {
     width: 64px;
     height: 64px;
     box-sizing: border-box;
-    background-image: url("assets/chest.png");
+    background-image: url("./assets/chest.png");
     transition:
     left 150ms ease-in-out 50ms,
     top 150ms ease-in-out 50ms;
 }
 
-.goal { background-image: url("assets/cross.png");}
-.wall { background-image: url("/assets/wall.png");}
+.goal { background-image: url("./assets/cross.png");}
+.wall { background-image: url("./assets/wall.png");}
 
 .counters {
     font-family: 'VT323', monospace;

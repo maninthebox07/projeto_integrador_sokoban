@@ -14,6 +14,8 @@ let boxMoves = 0;
 const playerMovesElement = document.getElementById('player-moves');
 const boxMovesElement = document.getElementById('box-moves');
 
+const playerWin = document.querySelector('.player');
+
 for (let b = 0; b < pieces.boxes.length; b++) {
     boxes.push(createBoardPiece(pieces.boxes[b], 'box'));
 }
@@ -31,9 +33,23 @@ function findBoxAtPosition(position) {
     return boxes.find((box) => box.x === position.x && box.y === position.y);
 }
 
-function congratulationsMessage() {
+function showVictoryMessage() {
     alert("Congratulations!");
 }
+
+function applyVictoryStyles() {
+    playerWin.style.marginLeft = "0%";
+    playerWin.style.width = "64px";
+    playerWin.style.backgroundImage = 'url("./assets/character2.png")';
+
+    boxes.forEach(box => {
+        box.element.style.width = "56px";
+        box.element.style.marginLeft = "3px";
+        box.element.style.backgroundSize = "cover";
+        box.element.style.backgroundImage = 'url("./assets/open-chest.png")';
+    });
+}
+
 
 function handlePieceMovement(keycode) {
     const nextPlayerPosition = player.nextPosition(keycode);
@@ -54,7 +70,8 @@ function handlePieceMovement(keycode) {
             console.log(caixasCertas);
 
             if (caixasCertas === numberOfGoals) {
-                setTimeout(congratulationsMessage, 200);
+                setTimeout(applyVictoryStyles, 200);
+                setTimeout(showVictoryMessage, 300);
             }
             console.log("Box Moves:", boxMoves += 1);
             boxMovesElement.textContent = boxMoves;
@@ -76,7 +93,6 @@ function handlePieceMovement(keycode) {
         playerMovesElement.textContent = playerMoves;
     }
 }
-
 
 function createBoardPiece(piecePosition, className) {
     const piece = new Piece(piecePosition.x, piecePosition.y);
@@ -101,8 +117,8 @@ function verifyPosition(position) {
 function contagemDeCaixasCorretas() {
     let count = 0;
 
-    for(let position of boxes) {
-        let {x: j, y: i} = position;
+    for (let position of boxes) {
+        let { x: j, y: i } = position;
 
         if (boardMap[i][j] === 'G') count++;
     }

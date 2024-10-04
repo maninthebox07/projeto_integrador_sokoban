@@ -33,9 +33,11 @@ function findBoxAtPosition(position) {
     return boxes.find((box) => box.x === position.x && box.y === position.y);
 }
 
-function victory() {
-    alert("You Win!");
-    
+function showVictoryMessage() {
+    alert("Congratulations!");
+}
+
+function applyVictoryStyles() {
     playerWin.style.marginLeft = "0%";
     playerWin.style.width = "64px";
     playerWin.style.backgroundImage = 'url("./assets/character2.png")';
@@ -68,8 +70,8 @@ function handlePieceMovement(keycode) {
             console.log(caixasCertas);
 
             if (caixasCertas === numberOfGoals) {
-                setTimeout(victory, 200);
-
+                setTimeout(showVictoryMessage, 300);
+                setTimeout(applyVictoryStyles, 200);
             }
             console.log("Box Moves:", boxMoves += 1);
             boxMovesElement.textContent = boxMoves;

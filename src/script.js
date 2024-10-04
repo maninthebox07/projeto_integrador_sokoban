@@ -21,7 +21,6 @@ for (let b = 0; b < pieces.boxes.length; b++) {
 }
 
 window.addEventListener("keydown", function (event) {
-    // event.preventDefault();
 
     handlePieceMovement(event.code);
 });
@@ -50,7 +49,6 @@ function applyVictoryStyles() {
     });
 }
 
-
 function handlePieceMovement(keycode) {
     const nextPlayerPosition = player.nextPosition(keycode);
     const foundBox = findBoxAtPosition(nextPlayerPosition);
@@ -77,6 +75,7 @@ function handlePieceMovement(keycode) {
             boxMovesElement.textContent = boxMoves;
         }
     }
+    
     else {
         const playerCanMove = verifyPosition(nextPlayerPosition);
 

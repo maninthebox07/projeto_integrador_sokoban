@@ -4,18 +4,6 @@ function string2BoardMap(level) {
     return lines;
 }
 
-// export const boardMap = [
-//     [" ", " ", "#", "#", "#", "#", "#",],
-//     ["#", "#", "#", "P", ".", ".", "#",],
-//     ["#", ".", ".", "B", "#", ".", "#", "#"],
-//     ["#", ".", "#", "G", "B", ".", ".", "#"],
-//     ["#", ".", ".", "G", ".", "#", ".", "#"],
-//     ["#", ".", ".", "#", ".", ".", ".", "#"],
-//     [" ", "#", ".", ".", ".", "#", "#", "#"],
-//     [" ", "#", "#", "#", "#", "#",]
-// ]
-
-
 export function buildGameBoard(mapa) {
     const boardMap = string2BoardMap(mapa);
     const pieces = {
@@ -39,7 +27,6 @@ export function buildGameBoard(mapa) {
             const position = { x: j, y: i };
 
             if (char === '#') celula.classList.add('wall');
-            // if (char === 'B') celula.classList.add('box');
             if (char === 'P') pieces.player = position;
             if (char === 'B') pieces.boxes.push(position);
             if (char === 'G') {

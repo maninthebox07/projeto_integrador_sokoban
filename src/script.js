@@ -34,11 +34,20 @@ function findBoxAtPosition(position) {
 }
 
 function victory() {
-    alert("Congratulations!");
+    alert("You Win!");
+    
     playerWin.style.marginLeft = "0%";
     playerWin.style.width = "64px";
-    playerWin.style.backgroundImage = 'url("./assets/file2.png")';
+    playerWin.style.backgroundImage = 'url("./assets/character2.png")';
+
+    boxes.forEach(box => {
+        box.element.style.width = "56px";
+        box.element.style.marginLeft = "3px";
+        box.element.style.backgroundSize = "cover";
+        box.element.style.backgroundImage = 'url("./assets/open-chest.png")';
+    });
 }
+
 
 function handlePieceMovement(keycode) {
     const nextPlayerPosition = player.nextPosition(keycode);

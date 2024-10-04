@@ -50,7 +50,7 @@ main {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.31);
 }
 
-.empty{
+.empty {
     background-color: unset;
     box-shadow: none;
     background-image: unset;
@@ -65,8 +65,8 @@ main {
     background-image: url("./assets/character.png");
     background-size: cover;
     transition:
-    left 150ms ease-in-out 50ms,
-    top 150ms ease-in-out 50ms;
+        left 150ms ease-in-out 50ms,
+        top 150ms ease-in-out 50ms;
 }
 
 .box {
@@ -76,12 +76,18 @@ main {
     box-sizing: border-box;
     background-image: url("./assets/chest.png");
     transition:
-    left 150ms ease-in-out 50ms,
-    top 150ms ease-in-out 50ms;
+        left 150ms ease-in-out 50ms,
+        top 150ms ease-in-out 50ms;
 }
 
-.goal { background-image: url("./assets/goal.jpg");}
-.wall { background-image: url("./assets/wall.png"); background-size:auto;}
+.goal {
+    background-image: url("./assets/goal.jpg");
+}
+
+.wall {
+    background-image: url("./assets/wall.png");
+    background-size: auto;
+}
 
 .counters {
     font-family: 'VT323', monospace;

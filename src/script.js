@@ -94,7 +94,6 @@ function handlePieceMovement(keycode) {
     }
 }
 
-
 function createBoardPiece(piecePosition, className) {
     const piece = new Piece(piecePosition.x, piecePosition.y);
     piece.insertElementInto(className, board)
@@ -118,8 +117,8 @@ function verifyPosition(position) {
 function contagemDeCaixasCorretas() {
     let count = 0;
 
-    for(let position of boxes) {
-        let {x: j, y: i} = position;
+    for (let position of boxes) {
+        let { x: j, y: i } = position;
 
         if (boardMap[i][j] === 'G') count++;
     }

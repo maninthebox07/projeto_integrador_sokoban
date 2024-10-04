@@ -70,8 +70,8 @@ function handlePieceMovement(keycode) {
             console.log(caixasCertas);
 
             if (caixasCertas === numberOfGoals) {
-                setTimeout(showVictoryMessage, 300);
                 setTimeout(applyVictoryStyles, 200);
+                setTimeout(showVictoryMessage, 300);
             }
             console.log("Box Moves:", boxMoves += 1);
             boxMovesElement.textContent = boxMoves;

@@ -2,10 +2,10 @@ import Piece from "./piece.js";
 import { buildGameBoard } from "./board.js";
 import { mapa1, mapa2, mapa3 } from "./maps.js";
 
-const { boardMap, pieces, numberOfGoals } = buildGameBoard(mapa1);
+const { boardMap, pieces, numberOfGoals } = buildGameBoard(mapa3);
 const board = document.querySelector('.board');
 
-const player = createBoardPiece(pieces.player, 'player')
+const player = createBoardPiece(pieces.player, 'player');
 const boxes = [];
 
 let playerMoves = 0;
